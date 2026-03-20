@@ -1,6 +1,8 @@
 "use client";
 
 import { useReducer, useRef, useEffect, useCallback } from "react";
+
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "${API_BASE}";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -116,7 +118,7 @@ export default function Home() {
     dispatch({ type: "FETCHING" });
 
     try {
-      const res = await fetch("http://localhost:8000/generate", {
+      const res = await fetch("${API_BASE}/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
@@ -255,7 +257,7 @@ export default function Home() {
 
           {state.downloadFile && (
             <a
-              href={`http://localhost:8000/download/${state.downloadFile}`}
+              href={`${API_BASE}/download/${state.downloadFile}`}
               download
               className="mt-4 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-emerald-400 border border-emerald-900 hover:bg-emerald-950 transition-colors"
             >

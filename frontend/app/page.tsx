@@ -2,7 +2,7 @@
 
 import { useReducer, useRef, useEffect, useCallback } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "${API_BASE}";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -118,7 +118,7 @@ export default function Home() {
     dispatch({ type: "FETCHING" });
 
     try {
-      const res = await fetch("${API_BASE}/generate", {
+      const res = await fetch(`${API_BASE}/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),

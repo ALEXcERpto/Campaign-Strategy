@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-PROMPT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+PROMPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = PROMPT_DIR
 
 
